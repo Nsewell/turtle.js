@@ -1,0 +1,8 @@
+repeat 60 [
+	repeat 8 [
+	fd 100
+	rt 45
+	]
+	lt 6
+	]
+
