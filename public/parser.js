@@ -91,7 +91,6 @@ Parser.prototype.next = function (precedent) {
             token.args = args;
             //alert(token);
         } else if (token.data == "to") {
-            
             var name = this.tk.next();
 
             if (name == null) return new Token('error','I don\'t know how to tokenize this');
@@ -238,14 +237,10 @@ ListTokenizer.prototype.next = function () {
         //alert("next is "+next);
         this.current++;
         return next;
-        
     }
 }
 
-
-
 function Tokenizer () {
-
     this.text = null;
     this.cache = new Array();
  }
@@ -256,10 +251,10 @@ Tokenizer.prototype.load = function (text) {
 
  
 Tokenizer.prototype.ops_rx = /^\s*(!=|<>|<=|>=|\+|\-|\*|\/|\%|<|>|=|\[|\]|\(|\)|to|end)\s*/i;
-Tokenizer.prototype.wrd_rx = /^\s*([a-zA-Z\.]\w*\??)\s*/i;
+Tokenizer.prototype.wrd_rx = /^\s*([a-zA-Z\.][\w\.]*\??)\s*/i;
 Tokenizer.prototype.var_rx = /^\s*:([a-zA-Z]\w*)\s*/i;
 Tokenizer.prototype.num_rx = /^\s*(\d+(?:\.\d+)?)\s*/i;
-Tokenizer.prototype.sym_rx = /^\s*"([a-zA-Z]\w*)\s*/i;
+Tokenizer.prototype.sym_rx = /^\s*"([a-zA-Z][\w\.]*)\s*/i;
 
 Tokenizer.prototype.empty = /^\s*$/;
 Tokenizer.prototype.comment = /^\s*;.*(\r?\n|$)/;
