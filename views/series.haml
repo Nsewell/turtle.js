@@ -1,0 +1,25 @@
+!!!
+%html{:xmlns => 'http://www.w3.org/1999/xhtml', :lang => 'en', "xml:lang" => 'en'}
+  %head
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=UTF-8'}
+    %title papert: logo in your browser
+    %link{:rel => 'icon', :href => '/favicon.ico'}
+    %link{:rel => 'stylesheet', :type => 'text/css', :href => '/papert.css'}
+    %meta{:content => "width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
+    %script{:type => 'text/javascript', :src => '/turtle.js'}
+    %script{:type => 'text/javascript', :src => '/parser.js'}
+    %script{:type => 'text/javascript', :src => '/logo.js'}
+    %script{:type => 'text/javascript', :src => '/init.js'}
+    %script{:type => 'text/javascript', :src => '/Three.js'}
+  %body
+    #main
+      #top
+        .inner
+          %h1 Papert―logo in your browser
+      - i = 0
+      -@recent.each_with_index do |script, i|
+        %p=script["text"]
+        %iframe.embed{:src => "/#{@series}/#{i}"}
+        /%script="setTimeout(function(){iframe = document.createElement('iframe');iframe.src = '/bh/#{i}'; document.importNode(iframe); iframe.className = 'embed'; document.body.appendChild(iframe);}, #{i-1} * 1000);"
+      /%script="setTimeout(function(){iframe = document.createElement('iframe');iframe.src = 'help.txt'; document.importNode(iframe); document.body.appendChild(iframe);}, #{i} * 1000);"
+      %iframe#notes{:src => 'help.txt'}

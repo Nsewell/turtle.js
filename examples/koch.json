@@ -1,0 +1,19 @@
+{"examples": 
+{"Koch Snowflake": [
+{"name": "Koch 1",
+  "text": "First we have a triangle, with angles of 60 degrees (made by turning to the right by the exterior angle of 120 degrees).",
+  "code":"to line :count :length\nifelse :count = 1 [fw :length] [\nmake \"count :count -1 \nline :count :length\nlt 60 line :count :length\nrt 120 line :count :length\nlt 60 line :count :length]\nend\n\nto koch :count :length\nrt 30 line :count :length\nrt 120 line :count :length\nrt 120 line :count :length\nend\n\nreset\nsetxy  10 380\nkoch 1 50"
+},
+{ "name": "Koch 2",
+  "text": "Next we subdivide each line according to the pattern\nForward, left X, Forward, Right 2X, Forward, Left X, Forward",
+  "code":"to line :count :length\nifelse :count = 1 [fw :length] [\nmake \"count :count -1 \nline :count :length\nlt 60 line :count :length\nrt 120 line :count :length\nlt 60 line :count :length]\nend\n\nto koch :count :length\nrt 30 line :count :length\nrt 120 line :count :length\nrt 120 line :count :length\nend\n\nreset\nsetxy 10 380\nkoch 2 40"},
+{ "name": "Koch 5",
+  "text": "At iteration 5 the snowflake it taking shape",
+  "code":"to line :count :length\nifelse :count = 1 [fw :length] [\nmake \"count :count -1 \nline :count :length\nlt 60 line :count :length\nrt 120 line :count :length\nlt 60 line :count :length]\nend\n\nto koch :count :length\nrt 30 line :count :length\nrt 120 line :count :length\nrt 120 line :count :length\nend\n\nreset\nsetxy  10 380\nkoch 5 5"},
+{ "name": "Koch 6",
+  "text": "Now we have a snowflake, with a smaller snowflake of iteration 4 added in the centre. These kinds of fractals turn up all over nature.",
+  "code":"to line :count :length\nifelse :count = 1 [fw :length] [\nmake \"count :count -1 \nline :count :length\nlt 60 line :count :length\nrt 120 line :count :length\nlt 60 line :count :length]\nend\n\nto koch :count :length\nrt 30 line :count :length\nrt 120 line :count :length\nrt 120 line :count :length\nend\n\nreset\nsetxy  10 380\nkoch 5 5\nrt 120\nsetxy  120 260\nkoch 4 6"}
+]
+}
+
+}

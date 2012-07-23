@@ -5,10 +5,12 @@
     %title papert: logo in your browser
     %link{:rel => 'icon', :href => '/favicon.ico'}
     %link{:rel => 'stylesheet', :type => 'text/css', :href => '/papert.css'}
+    %meta{:content => "width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
     %script{:type => 'text/javascript', :src => '/turtle.js'}
     %script{:type => 'text/javascript', :src => '/parser.js'}
     %script{:type => 'text/javascript', :src => '/logo.js'}
     %script{:type => 'text/javascript', :src => '/init.js'}
+    %script{:type => 'text/javascript', :src => '/Three.js'}
   %body{:onload => 'init(\'canvas\',\'turtle\',\'input\',\'oldcode\', \'textOutput\'); clearcanvas(); run(1,false);'}
     #main
       %form#input{:action => '/', :method => 'post', :onsubmit => 'this.img.value = canvas.toDataURL().replace(\'data:image/png;base64,\',\'\')'}
@@ -26,6 +28,8 @@
                   %br
                   bbcode:
                   %input#bbcode{:readonly => 'readonly', :value => "[url=#{SITE}#{@hash}][img]#{SITE}#{@hash}.png[/img]Run online[/url]"}
+            -if @text
+              %p=@text
         #content
           .inner
             #oldcode  
@@ -52,8 +56,8 @@
       #footer{:style => 'height: 20px;'}
         %span{:style => 'float: left; margin-left: 20px; margin-right: auto; color: white;'} Recent Programs
         %span{:style => 'float: right; margin-left: auto; margin-right: 20px; color: white;'}
-          this is free software, and
-          %a{:href => 'http://code.google.com/p/papert'} papert is hosted on google code
+          Fork this on
+          %a{:href => 'http://github.com/nsewell'} Github
       #recent
         %a{:name => 'recent'}
         %ul
